@@ -23,16 +23,17 @@ const typed = new Typed("#element", {
 const navLinkEls = document.querySelectorAll(".nav-link");
 const sectionEls = document.querySelectorAll("section");
 
-let currentSection = "home";
+let currentSection = "";
 window.addEventListener("scroll", () => {
   sectionEls.forEach((sectionEl) => {
-    if (window.scrollY >= sectionEl.offsetTop - sectionEl.clientHeight / 2) {
+    if (window.scrollY >= sectionEl.offsetTop - sectionEl.clientHeight / 3) {
       currentSection = sectionEl.id;
     }
   });
   navLinkEls.forEach((navLinkEl) => {
+    navLinkEl.classList.remove("active");
     if (navLinkEl.href.includes(currentSection)) {
-      document.querySelector(".active").classList.remove("active");
+      // document.querySelector(".active").classList.remove("active");
       navLinkEl.classList.add("active");
     }
   });
